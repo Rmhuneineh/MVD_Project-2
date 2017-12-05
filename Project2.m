@@ -134,7 +134,7 @@ ylabel('uy [-]');
 title('uy vs Slip for a range of Fz');
 
 % Calculate and Plot Lever Arm t[mm] at Fz=4kN
-t = Mz(index, 2)./Fy(index, 2)*10^3;
+t = -Mz(index, 2)./Fy(index, 2)*10^3;
 
 figure; hold on;
 plot(SideSlip, t);
@@ -160,7 +160,7 @@ ylabel('Fy [N]');
 % Evaluate and Plot Fy as a function of Fx at Fz = 4kN and Camber = 0 for different
 % side slip
 indeces = [111 121 131 141 151];
-Fy0 = Fy(indeces(1:5)); % [N]
+Fy0 = Fy(indeces(1:5), 2); % [N]
 Fx0 = Fz(2)*uxp(2); % [N]
 Fyn = zeros(201, 5);
 for i = 1:5
@@ -180,7 +180,7 @@ ylabel('Fy [N]');
 
 % Evaluate and Plot Side Slip Stiffness as a function of Fx at different values of
 % Fz
-C0 = zeros(201, 5);
+
 C = zeros(201, 5);
 for i = 1:5
    for j = index
